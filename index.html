@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sriram | Full-Stack Developer & Creative Technologist</title>
+    <meta name="description" content="Sriram — Full-Stack Developer crafting beautiful, scalable web experiences.">
+    <link rel="icon" type="image/x-icon" href="s.ico.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Aurora background -->
+    <div class="aurora">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <div class="loader-hex">
+                <svg viewBox="0 0 100 100" class="hex-svg">
+                    <polygon points="50,5 90,27 90,73 50,95 10,73 10,27" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" fill="none" stroke="currentColor" stroke-width="1" class="hex-inner"/>
+                </svg>
+                <span class="loader-text">S</span>
+            </div>
+            <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+            <div class="loader-status">INITIALIZING SYSTEM</div>
+        </div>
+    </div>
+    <!-- Side rail -->
+    <aside class="side-rail right-rail">
+        <a href="mailto:sriram@example.com" class="rail-mail">sriram@example.com</a>
+        <div class="rail-line"></div>
+    </aside>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">Sriram</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-section="home"><span>01</span> Home</a>
+                <a href="#about" class="nav-link" data-section="about"><span>02</span> About</a>
+                <a href="#skills" class="nav-link" data-section="skills"><span>03</span> Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects"><span>04</span> Projects</a>
+                <a href="#experience" class="nav-link" data-section="experience"><span>05</span> Journey</a>
+                <a href="#contact" class="nav-link" data-section="contact"><span>06</span> Contact</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-bolt"></i></button>
+                <button class="nav-hamburger" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-bg"></div>
+        <div class="mobile-menu-links">
+            <a href="#home" class="mobile-link" data-index="01">Home</a>
+            <a href="#about" class="mobile-link" data-index="02">About</a>
+            <a href="#skills" class="mobile-link" data-index="03">Skills</a>
+            <a href="#projects" class="mobile-link" data-index="04">Projects</a>
+            <a href="#experience" class="mobile-link" data-index="05">Journey</a>
+            <a href="#contact" class="mobile-link" data-index="06">Contact</a>
+        </div>
+    </div>
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <span class="badge-pulse"></span>
+                    <span class="badge-text">SYSTEM ONLINE &middot; AVAILABLE FOR HIRE</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-greeting reveal-up">Hey there, I&apos;m</span>
+                    <span class="hero-name reveal-up">
+                        <span class="name-glitch" data-text="Sriram">Sriram</span>
+                    </span>
+                    <span class="hero-role reveal-up">
+                        <span class="role-prefix">Building </span>
+                        <span class="typed-text" id="typedText"></span>
+                        <span class="typed-cursor">_</span>
+                    </span>
+                </h1>
+                <p class="hero-description reveal-up">
+                    A passionate <span class="hl">full-stack developer</span> transforming ideas into
+                    elegant, scalable digital experiences. Where creativity meets clean code.
+                </p>
+                <div class="hero-cta reveal-up">
+                    <a href="#projects" class="btn-primary">
+                        <span class="btn-text">View My Work</span>
+                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <span class="btn-text">Let&apos;s Talk</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                    </a>
+                </div>
+                <div class="hero-stats reveal-up">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="15">0</span>
+                        <span class="stat-plus">+</span>
+                        <span class="stat-label">Projects Shipped</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-plus">+</span>
+                        <span class="stat-label">Years Coding</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10">0</span>
+                        <span class="stat-plus">+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal-up">
+                <div class="orbit-container">
+                    <div class="orbit orbit-1"><div class="orbit-dot"><i class="fab fa-react"></i></div></div>
+                    <div class="orbit orbit-2"><div class="orbit-dot"><i class="fab fa-node-js"></i></div></div>
+                    <div class="orbit orbit-3"><div class="orbit-dot"><i class="fab fa-python"></i></div></div>
+                    <div class="orbit orbit-4"><div class="orbit-dot"><i class="fas fa-database"></i></div></div>
+                    <div class="orbit-center">
+                        <div class="center-ring"></div>
+                        <div class="center-core">
+                            <img src="rammm.jpg" alt="Sriram" class="hero-image" id="heroImage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+            <span>SCROLL</span>
+        </div>
+    </section>
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>FULL-STACK DEVELOPER</span><span class="dot">&#9670;</span>
+            <span>UI/UX DESIGNER</span><span class="dot">&#9670;</span>
+            <span>PROBLEM SOLVER</span><span class="dot">&#9670;</span>
+            <span>CREATIVE TECHNOLOGIST</span><span class="dot">&#9670;</span>
+            <span>FULL-STACK DEVELOPER</span><span class="dot">&#9670;</span>
+            <span>UI/UX DESIGNER</span><span class="dot">&#9670;</span>
+            <span>PROBLEM SOLVER</span><span class="dot">&#9670;</span>
+            <span>CREATIVE TECHNOLOGIST</span><span class="dot">&#9670;</span>
+        </div>
+    </div>
+    <!-- About -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-meta">
+                    <span class="section-tag reveal-up">// 01</span>
+                    <span class="section-name reveal-up">ABOUT.ME</span>
+                </div>
+                <h2 class="section-title reveal-up">Crafting Digital <span class="accent">Experiences</span></h2>
+                <div class="section-line reveal-up"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-col reveal-left">
+                    <div class="about-image-wrapper">
+                        <div class="about-image-frame">
+                            <div class="corner tl"></div>
+                            <div class="corner tr"></div>
+                            <div class="corner bl"></div>
+                            <div class="corner br"></div>
+                            <img src="rammm.jpg" alt="Sriram" class="about-image">
+                        </div>
+                        <div class="about-experience-badge">
+                            <span class="exp-number">3+</span>
+                            <span class="exp-text">YEARS OF<br>CODING</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content-col">
+                    <h3 class="about-subtitle reveal-up">A Developer Who <span class="accent">Cares</span></h3>
+                    <p class="about-text reveal-up">I&apos;m <span class="hl">Sriram</span>, a full-stack developer with a deep passion for creating impactful digital solutions. My journey in tech started with curiosity and evolved into a relentless pursuit of excellence.</p>
+                    <p class="about-text reveal-up">I specialize in building <span class="hl">scalable web applications</span> using modern technologies. From crafting pixel-perfect frontends to architecting robust backend systems, I enjoy every aspect of the development process.</p>
+                    <div class="about-details reveal-up">
+                        <div class="about-detail"><i class="fas fa-map-marker-alt"></i><div><span>Location</span><strong>India</strong></div></div>
+                        <div class="about-detail"><i class="fas fa-graduation-cap"></i><div><span>Education</span><strong>B.Tech CS</strong></div></div>
+                        <div class="about-detail"><i class="fas fa-briefcase"></i><div><span>Status</span><strong>Open to Work</strong></div></div>
+                        <div class="about-detail"><i class="fas fa-code"></i><div><span>Focus</span><strong>Full-Stack</strong></div></div>
+                    </div>
+                    <a href="#contact" class="btn-primary reveal-up">
+                        <span class="btn-text">Get In Touch</span>
+                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Skills -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-meta">
+                    <span class="section-tag reveal-up">// 02</span>
+                    <span class="section-name reveal-up">SKILLS.STACK</span>
+                </div>
+                <h2 class="section-title reveal-up">My Technical <span class="accent">Arsenal</span></h2>
+                <div class="section-line reveal-up"></div>
+            </div>
+            <div class="skills-container">
+                <div class="skills-category reveal-up">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-code"></i></div>
+                        <h3 class="category-title">Frontend</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="95"><div class="skill-icon"><i class="fab fa-html5"></i></div><div class="skill-info"><span class="skill-name">HTML5</span><span class="skill-percent">95%</span></div><div class="skill-bar"><div class="skill-progress" data-width="95"></div></div></div>
+                        <div class="skill-card" data-skill="90"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><div class="skill-info"><span class="skill-name">CSS3</span><span class="skill-percent">90%</span></div><div class="skill-bar"><div class="skill-progress" data-width="90"></div></div></div>
+                        <div class="skill-card" data-skill="88"><div class="skill-icon"><i class="fab fa-js-square"></i></div><div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-percent">88%</span></div><div class="skill-bar"><div class="skill-progress" data-width="88"></div></div></div>
+                        <div class="skill-card" data-skill="85"><div class="skill-icon"><i class="fab fa-react"></i></div><div class="skill-info"><span class="skill-name">React</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-width="85"></div></div></div>
+                        <div class="skill-card" data-skill="80"><div class="skill-icon"><i class="fab fa-bootstrap"></i></div><div class="skill-info"><span class="skill-name">Bootstrap</span><span class="skill-percent">80%</span></div><div class="skill-bar"><div class="skill-progress" data-width="80"></div></div></div>
+                    </div>
+                </div>
+                <div class="skills-category reveal-up">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-server"></i></div>
+                        <h3 class="category-title">Backend</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="85"><div class="skill-icon"><i class="fab fa-node-js"></i></div><div class="skill-info"><span class="skill-name">Node.js</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-width="85"></div></div></div>
+                        <div class="skill-card" data-skill="82"><div class="skill-icon"><i class="fab fa-python"></i></div><div class="skill-info"><span class="skill-name">Python</span><span class="skill-percent">82%</span></div><div class="skill-bar"><div class="skill-progress" data-width="82"></div></div></div>
+                        <div class="skill-card" data-skill="78"><div class="skill-icon"><i class="fab fa-java"></i></div><div class="skill-info"><span class="skill-name">Java</span><span class="skill-percent">78%</span></div><div class="skill-bar"><div class="skill-progress" data-width="78"></div></div></div>
+                        <div class="skill-card" data-skill="80"><div class="skill-icon"><i class="fas fa-database"></i></div><div class="skill-info"><span class="skill-name">SQL</span><span class="skill-percent">80%</span></div><div class="skill-bar"><div class="skill-progress" data-width="80"></div></div></div>
+                        <div class="skill-card" data-skill="75"><div class="skill-icon"><i class="fas fa-fire"></i></div><div class="skill-info"><span class="skill-name">Firebase</span><span class="skill-percent">75%</span></div><div class="skill-bar"><div class="skill-progress" data-width="75"></div></div></div>
+                    </div>
+                </div>
+                <div class="skills-category reveal-up">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="fas fa-tools"></i></div>
+                        <h3 class="category-title">Tools</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="88"><div class="skill-icon"><i class="fab fa-git-alt"></i></div><div class="skill-info"><span class="skill-name">Git</span><span class="skill-percent">88%</span></div><div class="skill-bar"><div class="skill-progress" data-width="88"></div></div></div>
+                        <div class="skill-card" data-skill="85"><div class="skill-icon"><i class="fab fa-figma"></i></div><div class="skill-info"><span class="skill-name">Figma</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-width="85"></div></div></div>
+                        <div class="skill-card" data-skill="80"><div class="skill-icon"><i class="fab fa-docker"></i></div><div class="skill-info"><span class="skill-name">Docker</span><span class="skill-percent">80%</span></div><div class="skill-bar"><div class="skill-progress" data-width="80"></div></div></div>
+                        <div class="skill-card" data-skill="82"><div class="skill-icon"><i class="fas fa-terminal"></i></div><div class="skill-info"><span class="skill-name">Linux</span><span class="skill-percent">82%</span></div><div class="skill-bar"><div class="skill-progress" data-width="82"></div></div></div>
+                        <div class="skill-card" data-skill="78"><div class="skill-icon"><i class="fas fa-cloud"></i></div><div class="skill-info"><span class="skill-name">AWS</span><span class="skill-percent">78%</span></div><div class="skill-bar"><div class="skill-progress" data-width="78"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-meta">
+                    <span class="section-tag reveal-up">// 03</span>
+                    <span class="section-name reveal-up">PROJECTS.WORKS</span>
+                </div>
+                <h2 class="section-title reveal-up">Featured <span class="accent">Projects</span></h2>
+                <div class="section-line reveal-up"></div>
+            </div>
+            <div class="projects-filter reveal-up">
+                <button class="filter-btn active" data-filter="all"><span>All</span></button>
+                <button class="filter-btn" data-filter="web"><span>Web</span></button>
+                <button class="filter-btn" data-filter="frontend"><span>Frontend</span></button>
+                <button class="filter-btn" data-filter="fullstack"><span>Full Stack</span></button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal-up" data-category="fullstack">
+                    <div class="project-number">01</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div>
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-desc">A full-featured e-commerce platform with real-time inventory, secure payments, and an admin dashboard.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-category="web">
+                    <div class="project-number">02</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-comments"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">JavaScript</span><span class="tag">Socket.io</span><span class="tag">Express</span></div>
+                        <h3 class="project-title">Real-Time Chat App</h3>
+                        <p class="project-desc">A real-time messaging application with end-to-end encryption, file sharing, and group chat capabilities.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-category="frontend">
+                    <div class="project-number">03</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-chart-line"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">React</span><span class="tag">D3.js</span><span class="tag">Tailwind</span></div>
+                        <h3 class="project-title">Analytics Dashboard</h3>
+                        <p class="project-desc">A beautiful analytics dashboard with interactive charts, real-time data visualization, and customizable widgets.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-category="fullstack">
+                    <div class="project-number">04</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-tasks"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span></div>
+                        <h3 class="project-title">Task Management System</h3>
+                        <p class="project-desc">A collaborative project management tool with Kanban boards, time tracking, and team analytics.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-category="web">
+                    <div class="project-number">05</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-robot"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Flask</span></div>
+                        <h3 class="project-title">AI-Powered Assistant</h3>
+                        <p class="project-desc">An intelligent chatbot leveraging NLP and machine learning for natural conversation and task automation.</p>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-category="frontend">
+                    <div class="project-number">06</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-cloud-sun"></i></div>
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">API</span><span class="tag">JavaScript</span></div>
+                        <h3 class="project-title">Weather Forecast App</h3>
+                        <p class="project-desc">A sleek weather application with 7-day forecasts, interactive maps, and location-based alerts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-meta">
+                    <span class="section-tag reveal-up">// 04</span>
+                    <span class="section-name reveal-up">JOURNEY.TIMELINE</span>
+                </div>
+                <h2 class="section-title reveal-up">My <span class="accent">Journey</span></h2>
+                <div class="section-line reveal-up"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024 &mdash; Present</span>
+                        <h3 class="timeline-title">Full-Stack Developer</h3>
+                        <p class="timeline-company">Freelance / Open Source</p>
+                        <p class="timeline-desc">Building scalable web applications and contributing to open-source projects. Specializing in React, Node.js, and cloud architectures.</p>
+                        <div class="timeline-tags"><span>React</span><span>Node.js</span><span>AWS</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 &mdash; 2024</span>
+                        <h3 class="timeline-title">Frontend Developer</h3>
+                        <p class="timeline-company">Tech Startup</p>
+                        <p class="timeline-desc">Developed responsive web interfaces and improved user experience. Led the redesign of the main product dashboard, increasing user engagement by 40%.</p>
+                        <div class="timeline-tags"><span>React</span><span>CSS</span><span>UI/UX</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 &mdash; 2023</span>
+                        <h3 class="timeline-title">Web Development Intern</h3>
+                        <p class="timeline-company">Software Company</p>
+                        <p class="timeline-desc">Gained hands-on experience in full-stack development. Built internal tools and learned agile methodologies in a fast-paced environment.</p>
+                        <div class="timeline-tags"><span>JavaScript</span><span>Python</span><span>SQL</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 &mdash; 2024</span>
+                        <h3 class="timeline-title">B.Tech Computer Science</h3>
+                        <p class="timeline-company">University</p>
+                        <p class="timeline-desc">Graduated with distinction. Participated in hackathons, coding competitions, and led the college tech club.</p>
+                        <div class="timeline-tags"><span>DSA</span><span>Algorithms</span><span>ML</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-meta">
+                    <span class="section-tag reveal-up">// 05</span>
+                    <span class="section-name reveal-up">CONTACT.ME</span>
+                </div>
+                <h2 class="section-title reveal-up">Let&apos;s Build <span class="accent">Together</span></h2>
+                <div class="section-line reveal-up"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <h3 class="contact-subtitle">Ready to <span class="accent">Collaborate?</span></h3>
+                    <p class="contact-text">I&apos;m always excited to work on new projects and challenges. Whether you have an idea, a project, or just want to say hi &mdash; my inbox is always open!</p>
+                    <div class="contact-methods">
+                        <a href="mailto:sriram@example.com" class="contact-method">
+                            <div class="method-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="method-info">
+                                <span class="method-label">EMAIL</span>
+                                <span class="method-value">sriram@example.com</span>
+                            </div>
+                            <i class="fas fa-arrow-right method-arrow"></i>
+                        </a>
+                        <a href="tel:+919876543210" class="contact-method">
+                            <div class="method-icon"><i class="fas fa-phone"></i></div>
+                            <div class="method-info">
+                                <span class="method-label">PHONE</span>
+                                <span class="method-value">+91 98765 43210</span>
+                            </div>
+                            <i class="fas fa-arrow-right method-arrow"></i>
+                        </a>
+                        <div class="contact-method">
+                            <div class="method-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="method-info">
+                                <span class="method-label">LOCATION</span>
+                                <span class="method-value">India</span>
+                            </div>
+                            <i class="fas fa-arrow-right method-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal-right">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group"><input type="text" id="name" required placeholder=" "><label for="name">Your Name</label><div class="form-line"></div></div>
+                        <div class="form-group"><input type="email" id="email" required placeholder=" "><label for="email">Your Email</label><div class="form-line"></div></div>
+                        <div class="form-group"><input type="text" id="subject" required placeholder=" "><label for="subject">Subject</label><div class="form-line"></div></div>
+                        <div class="form-group"><textarea id="message" rows="5" required placeholder=" "></textarea><label for="message">Your Message</label><div class="form-line"></div></div>
+                        <button type="submit" class="btn-primary btn-submit">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            <span class="btn-glow"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">[</span>
+                    <span class="logo-text">Sriram</span>
+                    <span class="logo-bracket">]</span>
+                </div>
+                <p class="footer-text">Designed &amp; Built by <span class="accent">Sriram</span> with <i class="fas fa-heart heart-icon"></i></p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 Sriram. All rights reserved.</span>
+                <span class="footer-status"><span class="status-dot"></span>All systems operational</span>
+            </div>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
+</body>
+</html>
