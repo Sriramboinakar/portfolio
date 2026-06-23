@@ -365,6 +365,7 @@ function initContactForm() {
         btnIcon.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
 
         const data = {
+            access_key: '4f29e442-a602-4596-9cf9-fff06de19fbf',
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
@@ -372,7 +373,7 @@ function initContactForm() {
         };
 
         try {
-            const res = await fetch('/api/contact', {
+            const res = await fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
