@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sriram — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a12;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .resume {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #12121e;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 0 60px rgba(77, 139, 255, 0.06);
+            border: 1px solid #1e1e32;
+        }
+        @media print {
+            body { background: white; padding: 0; color: #111; }
+            .resume { box-shadow: none; border: none; padding: 40px; background: white; border-radius: 0; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .section { break-inside: avoid; }
+            .skill-tag { background: #eef2ff !important; color: #4f46e5 !important; }
+            .header-sub { color: #555 !important; }
+            .contact-item { color: #333 !important; }
+            .section-title { color: #1e40af !important; }
+            .section-title::after { background: #1e40af !important; }
+            .exp-title { color: #111 !important; }
+            .exp-company { color: #4f46e5 !important; }
+            .divider { background: #ddd !important; }
+            .badge { background: #eef2ff !important; color: #4f46e5 !important; }
+            a { color: #1e40af !important; }
+        }
+        .print-only { display: none; }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #1e1e32;
+        }
+        .header-left h1 {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6c63ff, #4d8bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .header-left .title {
+            font-size: 16px;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        .header-right {
+            text-align: right;
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 2;
+        }
+        .header-right a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-right a:hover { color: #6c63ff; }
+        .header-right .contact-item i {
+            width: 16px;
+            margin-right: 6px;
+            color: #6c63ff;
+        }
+
+        /* Action bar */
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        .actions button {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-print {
+            background: #6c63ff;
+            color: white;
+        }
+        .btn-print:hover { background: #5a52e0; }
+        .btn-download {
+            background: #1e1e32;
+            color: #e0e0e0;
+            border: 1px solid #2a2a45;
+        }
+        .btn-download:hover { background: #2a2a45; }
+        @media print { .actions { display: none; } }
+
+        /* Summary */
+        .summary {
+            font-size: 15px;
+            color: #c8c8d8;
+            margin-bottom: 30px;
+            padding: 20px 24px;
+            background: #18182a;
+            border-radius: 12px;
+            border-left: 3px solid #6c63ff;
+            line-height: 1.7;
+        }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        /* Sections */
+        .section { margin-bottom: 28px; }
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #6c63ff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #1e1e32;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .skill-tag {
+            padding: 6px 14px;
+            background: #18182a;
+            border: 1px solid #2a2a45;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #c8c8d8;
+        }
+
+        /* Experience / Education */
+        .exp-item {
+            margin-bottom: 18px;
+        }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .exp-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #e8e8f0;
+        }
+        .exp-date {
+            font-size: 12px;
+            color: #6c63ff;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .exp-company {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 500;
+            margin: 2px 0 6px;
+        }
+        .exp-desc {
+            font-size: 13px;
+            color: #a8a8b8;
+            line-height: 1.6;
+            list-style: none;
+        }
+        .exp-desc li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 4px;
+        }
+        .exp-desc li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #6c63ff;
+            font-weight: 700;
+        }
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 14px;
+            padding: 14px 16px;
+            background: #18182a;
+            border-radius: 10px;
+            border: 1px solid #1e1e32;
+        }
+        .project-item:last-child { margin-bottom: 0; }
+        .project-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e8e8f0;
+        }
+        .project-name i {
+            color: #6c63ff;
+            margin-right: 6px;
+            font-size: 12px;
+        }
+        .project-desc {
+            font-size: 13px;
+            color: #a8a8b8;
+            margin-top: 4px;
+        }
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .project-stack span {
+            padding: 2px 10px;
+            background: #0a0a12;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* Certifications */
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: #18182a;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .cert-item:last-child { margin-bottom: 0; }
+        .cert-item i { color: #6c63ff; width: 18px; }
+        .cert-item .cert-name { color: #e0e0e0; font-weight: 500; }
+        .cert-item .cert-org { color: #94a3b8; margin-left: auto; font-size: 12px; }
+
+        .divider {
+            height: 1px;
+            background: #1e1e32;
+            margin: 6px 0 16px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #1e1e32;
+            font-size: 12px;
+            color: #555;
+        }
+        @media print { .footer-note { display: none; } }
+    </style>
+</head>
+<body>
+
+<div class="resume">
+    <!-- Actions -->
+    <div class="actions no-print">
+        <button class="btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / Save PDF
+        </button>
+        <button class="btn-download" onclick="window.print()">
+            <i class="fas fa-download"></i> Download PDF
+        </button>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <h1>Sriram</h1>
+            <div class="title">Full-Stack Developer</div>
+        </div>
+        <div class="header-right">
+            <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:sriramboinakar@gmail.com">sriramboinakar@gmail.com</a></div>
+            <div class="contact-item"><i class="fas fa-phone"></i> <a href="tel:+918978131267">+91 89781 31267</a></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> India</div>
+            <div class="contact-item"><i class="fas fa-globe"></i> <a href="https://portfolio-seven-henna-93.vercel.app" target="_blank">portfolio-seven-henna-93.vercel.app</a></div>
+            <div class="contact-item"><i class="fab fa-github"></i> <a href="https://github.com/sriramboinakar" target="_blank">github.com/sriramboinakar</a></div>
+            <div class="contact-item"><i class="fab fa-linkedin-in"></i> <a href="https://linkedin.com/in/sriramboinakar" target="_blank">linkedin.com/in/sriramboinakar</a></div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+        Passionate full-stack developer with 3+ years of coding experience, building scalable, 
+        user-centric web applications. Skilled across the modern JavaScript ecosystem — from 
+        crafting pixel-perfect React frontends to architecting robust Node.js backends. 
+        Quick learner, team player, and always excited to turn complex problems into elegant 
+        digital solutions.
+    </div>
+
+    <!-- Grid -->
+    <div class="grid">
+        <!-- Left Column -->
+        <div>
+            <!-- Skills -->
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skills-list">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">HTML5 &amp; CSS3</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Git &amp; GitHub</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Canva</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">REST APIs</span>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">B.Tech in Computer Science</span>
+                        <span class="exp-date">2023 — 2027</span>
+                    </div>
+                    <div class="exp-company">University</div>
+                    <ul class="exp-desc">
+                        <li>Active coursework in DSA, web development, and software engineering</li>
+                        <li>Building real-world projects across full-stack and machine learning domains</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="section">
+                <div class="section-title">Certifications</div>
+                <div class="cert-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="cert-name">Fortinet Certified Associate in Cybersecurity</span>
+                    <span class="cert-org">Fortinet</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="cert-name">Fortinet Certified Fundamentals in Cybersecurity</span>
+                    <span class="cert-org">Fortinet</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+            <!-- Experience -->
+            <div class="section">
+                <div class="section-title">Experience</div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Full Stack Intern</span>
+                        <span class="exp-date">Sep 2025 — Present</span>
+                    </div>
+                    <div class="exp-company">Internship</div>
+                    <ul class="exp-desc">
+                        <li>Developing and maintaining full-stack web applications using React and Node.js</li>
+                        <li>Collaborating on feature implementation, code reviews, and deployment workflows</li>
+                        <li>Gaining hands-on experience with modern DevOps and cloud deployment practices</li>
+                    </ul>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Full-Stack Developer / Freelancer</span>
+                        <span class="exp-date">2024 — Present</span>
+                    </div>
+                    <div class="exp-company">Freelance / Open Source</div>
+                    <ul class="exp-desc">
+                        <li>Built and deployed scalable web applications for diverse clients</li>
+                        <li>Specializing in React, Node.js, Express, and modern JavaScript ecosystem</li>
+                        <li>Delivered end-to-end solutions from design through deployment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <div class="section-title">Projects</div>
+                <div class="project-item">
+                    <div class="project-name"><i class="fas fa-external-link-alt"></i> Portfolio Website</div>
+                    <div class="project-desc">Full-stack portfolio with cyberpunk-themed UI, particle animations, dark/light mode, and responsive design. Deployed on Vercel with serverless contact API.</div>
+                    <div class="project-stack"><span>HTML/CSS</span><span>JavaScript</span><span>Node.js</span><span>Vercel</span></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-name"><i class="fas fa-qrcode"></i> QR Attendance System</div>
+                    <div class="project-desc">Django-based attendance tracking using QR codes. Features automatic IP detection, real-time attendance marking, and faculty admin panel. Built during Live The Code 2.0 Hackathon.</div>
+                    <div class="project-stack"><span>Django</span><span>Python</span><span>SQLite</span><span>QR Code</span></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-name"><i class="fas fa-utensils"></i> Diet Recommendation System</div>
+                    <div class="project-desc">ML-powered food recommendation engine using content-based filtering with Scikit-Learn. FastAPI backend with Streamlit frontend, Dockerized for easy deployment.</div>
+                    <div class="project-stack"><span>FastAPI</span><span>Streamlit</span><span>Scikit-Learn</span><span>Docker</span></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-name"><i class="fas fa-cloud-sun"></i> Weather App</div>
+                    <div class="project-desc">Real-time weather application fetching live data from a public API with clean, responsive UI and dynamic forecasts.</div>
+                    <div class="project-stack"><span>API</span><span>JavaScript</span><span>HTML/CSS</span></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-name"><i class="fas fa-shopping-cart"></i> E-Commerce Platform</div>
+                    <div class="project-desc">Full-featured e-commerce application with real-time inventory, payment integration, and admin dashboard.</div>
+                    <div class="project-stack"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-sync-alt"></i> Last updated: June 2026 &middot; Available for opportunities
+    </div>
+</div>
+
+</body>
+</html>

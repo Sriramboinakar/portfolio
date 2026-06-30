@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
     <!-- Aurora background -->
@@ -20,9 +20,7 @@
         <div class="aurora-blob blob-3"></div>
     </div>
     <div class="grid-overlay"></div>
-    <canvas id="particleCanvas"></canvas>
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursorFollower"></div>
+    
     <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-inner">
@@ -58,6 +56,7 @@
                 <a href="#projects" class="nav-link" data-section="projects"><span>04</span> Projects</a>
                 <a href="#experience" class="nav-link" data-section="experience"><span>05</span> Journey</a>
                 <a href="#contact" class="nav-link" data-section="contact"><span>06</span> Contact</a>
+                <a href="resume/" class="nav-link" target="_blank"><span>07</span> Resume</a>
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-bolt"></i></button>
@@ -75,6 +74,7 @@
             <a href="#projects" class="mobile-link" data-index="04">Projects</a>
             <a href="#experience" class="mobile-link" data-index="05">Journey</a>
             <a href="#contact" class="mobile-link" data-index="06">Contact</a>
+            <a href="resume/" class="mobile-link" data-index="07">Resume</a>
         </div>
     </div>
     <!-- Hero -->
@@ -283,108 +283,51 @@
                 <button class="filter-btn" data-filter="fullstack"><span>Full Stack</span></button>
             </div>
             <div class="projects-grid">
-                <div class="project-card reveal-up" data-category="fullstack">
+                <div class="project-card reveal-up" data-category="web">
                     <div class="project-number">01</div>
                     <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="project-image-placeholder"><i class="fas fa-dumbbell"></i></div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span></div>
-                        <h3 class="project-title">E-Commerce Platform</h3>
-                        <p class="project-desc">A full-featured e-commerce platform with real-time inventory, secure payments, and an admin dashboard.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-up" data-category="frontend">
-                    <div class="project-number">02</div>
-                    <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-list-check"></i></div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                                <a href="C:\Users\SRIRAM\Desktop\shevvy-chin\index.html" target="_blank" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
                         <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
-                        <h3 class="project-title">Todo List App</h3>
-                        <p class="project-desc">A clean and interactive todo list with add, edit, delete, and local storage persistence.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-up" data-category="frontend">
-                    <div class="project-number">03</div>
-                    <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-calculator"></i></div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
-                        <h3 class="project-title">Calculator</h3>
-                        <p class="project-desc">A fully functional calculator with a sleek UI, supporting basic arithmetic operations.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-up" data-category="frontend">
-                    <div class="project-number">04</div>
-                    <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-clock"></i></div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
-                        <h3 class="project-title">Countdown Timer</h3>
-                        <p class="project-desc">A dynamic countdown timer with start, pause, and reset functionality for productivity.</p>
-                    </div>
-                </div>
-                <div class="project-card reveal-up" data-category="frontend">
-                    <div class="project-number">05</div>
-                    <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-question-circle"></i></div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
-                        <h3 class="project-title">Quiz App</h3>
-                        <p class="project-desc">An interactive quiz application with score tracking, timer, and multiple question categories.</p>
+                        <h3 class="project-title">Shevvy Chin — Fitness Coach</h3>
+                        <p class="project-desc">Brand website for a pre/post natal fitness specialist, CrossFit L1 coach, and yoga teacher. Built with a dark, modern aesthetic.</p>
                     </div>
                 </div>
                 <div class="project-card reveal-up" data-category="web">
-                    <div class="project-number">06</div>
+                    <div class="project-number">02</div>
                     <div class="project-image">
-                        <div class="project-image-placeholder"><i class="fas fa-cloud-sun"></i></div>
+                        <div class="project-image-placeholder"><i class="fas fa-crochet"></i></div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="#" class="project-link" title="Source Code"><i class="fab fa-github"></i></a>
+                                <a href="C:\Users\SRIRAM\Desktop\tiny threads\index.html" target="_blank" class="project-link" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <div class="project-tags"><span class="tag">API</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div>
-                        <h3 class="project-title">Weather App</h3>
-                        <p class="project-desc">A weather app that fetches real-time data from an API and displays forecasts with a clean UI.</p>
+                        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span></div>
+                        <h3 class="project-title">Tiny Threads — Crochet Store</h3>
+                        <p class="project-desc">Handmade crochet e-commerce site with a warm, playful design for showcasing and selling custom crochet creations.</p>
                     </div>
                 </div>
+                <div class="project-card reveal-up" data-category="fullstack">
+                    <div class="project-number">03</div>
+                    <div class="project-image">
+                        <div class="project-image-placeholder"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags"><span class="tag">Flask</span><span class="tag">Python</span><span class="tag">JavaScript</span></div>
+                        <div class="project-badge-dev">Under Development</div>
+                        <h3 class="project-title">Client Prospector Dashboard</h3>
+                        <p class="project-desc">AI-powered lead tracking & revenue dashboard for finding, managing, and messaging business prospects across niches.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -522,6 +465,6 @@
         </div>
     </footer>
     <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 </html>
